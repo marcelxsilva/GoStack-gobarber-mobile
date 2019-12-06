@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Image } from 'react-native';
 import Background from '~/components/Background';
 import { Container, Form, FormInput, SubmitButton, SignLink, SignText } from './styles';
@@ -6,16 +6,23 @@ import { Container, Form, FormInput, SubmitButton, SignLink, SignText } from './
 import logo from '~/assets/logo.png';
 
 export default function SignUp({ navigation }) {
+  const passwordRef = useRef();
+  const emailRef = useRef();
+  
+  function handleSubmit() { }
+  
   return (
     <Background>
       <Container>
         <Image source={logo} />
         <Form>
-        <FormInput
+          <FormInput
             icon='person-outline'
             autoCorrect={true}
             autoCapitalize='none'
             placeholder='Nome Completo'
+            returnKeyType='next'
+            onSubmitEditing={() => { emailRef.current.focus() }}
           />
 
           <FormInput
@@ -24,14 +31,20 @@ export default function SignUp({ navigation }) {
             autoCorrect={true}
             autoCapitalize='none'
             placeholder='E-mail'
+            ref={emailRef}
+            returnKeyType='next'
+            onSubmitEditing={() => { passwordRef.current.focus() }}
           />
 
           <FormInput
             icon='lock-outline'
             secureTextEntry
             placeholder='Senha'
+            ref={passwordRef}
+            returnKeyType='send'
+            onSubmitEditing={handleSubmit}
           />
-          <SubmitButton onPress={() => { }}>
+          <SubmitButton onPress={handleSubmit}>
             Acessar
           </SubmitButton>
         </Form>
