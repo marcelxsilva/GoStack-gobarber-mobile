@@ -28,6 +28,9 @@ Responsavel por realizar as navegações entre rotas na aplicação
 #### React Native Linear Gradient
 Foi utilizado para criar um background em gradient da aplicação.
 
+#### react native vector icons  
+Fornecer alguns icones para aplicação
+
 
 ## Autor
 
