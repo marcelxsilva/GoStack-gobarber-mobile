@@ -5,7 +5,7 @@ import { Container, Form, FormInput, SubmitButton, SignLink, SignText } from './
 
 import logo from '~/assets/logo.png';
 
-export default function SignIn() {
+export default function SignIn({ navigation }) {
   return (
     <Background>
       <Container>
@@ -28,7 +28,7 @@ export default function SignIn() {
             Acessar
           </SubmitButton>
         </Form>
-        <SignLink onPress={() => { }}><SignText>Criar uma Conta</SignText></SignLink>
+        <SignLink onPress={() => { navigation.navigate('SignUp') }}><SignText>Criar uma Conta</SignText></SignLink>
       </Container>
     </Background>
   );
