@@ -1,10 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
+import App from './src';
 
 // import { Container } from './styles';
 
 export default function GoBarber() {
   return (
-    <View />
+    <App />
   );
 }

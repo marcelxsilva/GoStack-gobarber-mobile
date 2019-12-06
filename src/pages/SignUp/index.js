@@ -1,9 +1,10 @@
 import React from 'react';
-import Routes from './routes';
+import { View } from 'react-native';
+
 // import { Container } from './styles';
 
-export default function src() {
+export default function SignUp() {
   return (
-    <Routes />
+    <View />
   );
 }
