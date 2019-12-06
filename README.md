@@ -20,6 +20,15 @@ yarn install
 yarn run android 
 ```
 
+> ### O que Foi Utilzado
+
+#### React Navigation
+Responsavel por realizar as navegações entre rotas na aplicação
+
+#### React Native Linear Gradient
+Foi utilizado para criar um background em gradient da aplicação.
+
+
 ## Autor
 
 👤 **Marcelo Silva**
