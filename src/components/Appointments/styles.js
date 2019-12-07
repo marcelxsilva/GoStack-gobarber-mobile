@@ -11,6 +11,7 @@ export const Container = styled.View`
   align-items: center;
   justify-content: space-between;
 
+opacity: ${props => (props.past ? 0.6 : 1)}
 `
   ;
 
