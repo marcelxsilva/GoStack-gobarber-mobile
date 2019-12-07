@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from "~/components/Background";
 import Appointments from "~/components/Appointments";
-
+import api from '~/services/api';
 import { Container, Title, List } from './styles';
 
 export default function Dashboard() {
-  const data = [1, 2, 3, 4, 5,6,7,8,10,];
+  const [appointments, setAppointments] = useState([]);
 
+  useEffect(() => {
+    async function loadAppontments() {
+      const response = await api.get('appointments');
+      setAppointments(response.data);
+    }
+    loadAppontments();
+  }, [])
+  
   return (
     <Background>
       <Container>
         <Title>Agendamentos</Title>
         <List
-          data={data}
-          keyExtractor={item => String(item)}
+          data={appointments}
+          keyExtractor={item => String(item.id)}
           renderItem={({ item }) => <Appointments data={item} />}
         />
       </Container>
