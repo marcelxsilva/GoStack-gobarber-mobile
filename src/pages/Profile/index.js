@@ -2,8 +2,9 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Background from "~/components/Background";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Container, Title, Form, FormInput, SubmitButton, Separator } from './styles';
+import { Container, Title, Form, FormInput, SubmitButton, Separator, LogoutButton } from './styles';
 import { updateProfileResquest } from '~/store/modules/user/actions';
+import { signOut } from '~/store/modules/auth/actions';
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ export default function Profile() {
     setOldPassword('');
     setConfirmPassword('');
     setNewpassword('');
-    
+
   }, [profile])
   async function handleSubmit() {
     dispatch(updateProfileResquest({
@@ -37,6 +38,9 @@ export default function Profile() {
 
   }
 
+  async function handleLogout() {
+    dispatch(signOut())
+  }
   return (
     <Background>
       <Container>
@@ -102,6 +106,7 @@ export default function Profile() {
             onChangeText={setConfirmPassword}
           />
           <SubmitButton onPress={handleSubmit}>Atualizar Perfil</SubmitButton>
+          <LogoutButton onPress={handleLogout}>Sair do GoBarber</LogoutButton>
         </Form>
       </Container>
     </Background >
