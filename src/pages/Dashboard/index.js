@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from "~/components/Background";
 import Appointments from "~/components/Appointments";
@@ -15,7 +16,23 @@ export default function Dashboard() {
     }
     loadAppontments();
   }, [])
-  
+
+  async function handleCancel(id) {
+    const response = await api.delete(`appointments/${id}`);
+    setAppointments(
+      appointments.map(
+        appointment => appointment.id === id ?
+          {
+            ...appointment,
+            cancelable: false,
+
+          } :
+          appointment
+      )
+    );
+    if (!response) { Alert.alert('Erro', 'Ocorreu um Erro ao realizar o cancelamento') }
+  }
+
   return (
     <Background>
       <Container>
@@ -23,7 +40,7 @@ export default function Dashboard() {
         <List
           data={appointments}
           keyExtractor={item => String(item.id)}
-          renderItem={({ item }) => <Appointments data={item} />}
+          renderItem={({ item }) => <Appointments onCancel={() => handleCancel(item.id)} data={item} />}
         />
       </Container>
     </Background>
