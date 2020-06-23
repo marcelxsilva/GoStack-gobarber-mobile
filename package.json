@@ -42,7 +42,7 @@
     "eslint-import-resolver-babel-plugin-root-import": "^1.1.1",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.57.0",
-    "react-test-renderer": "16.9.0"
+    "react-test-renderer": "16.13.0"
   },
   "jest": {
     "preset": "react-native"
